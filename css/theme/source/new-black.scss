@@ -1,0 +1,120 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #222;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 42px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #42affa;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}
+
+$transition-duration-fast: 300ms;
+$transition-duration: 800ms;
+
+
+// Footer
+#main-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 1;
+	transition: opacity $transition-duration-fast ease;
+
+	> small {
+		padding: 0 2em;
+		font-size: 0.45em;
+		transform: scale(1);
+		transition: transform $transition-duration ease;
+	}
+}
+
+// States
+.cover {
+	#main-footer > small {
+		transform: scale(1.5) translateY(-50px);
+	}
+}
+
+.hide-footer {
+	#main-footer {
+		opacity: 0;
+	}
+}
+
+// Slides
+.title-slide {
+	text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.06), 0px 4px 0px rgba(0, 0, 0, 0.06), 0px 6px 0px rgba(0, 0, 0, 0.06), 0px 8px 0px rgba(0, 0, 0, 0.06), 0px 10px 0px rgba(0, 0, 0, 0.06), 0px 12px 0px rgba(0, 0, 0, 0.06), 0px 14px 0px rgba(0, 0, 0, 0.06);
+}
+
+// Icons
+.icon-padding {
+	padding: 0 6px;
+}
+
+// Tooling
+.separator {
+	display: inline-block;
+	height: 1px;
+}
+
+.circled {
+	border-radius: 999px;
+}
+
+.flex-container {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+.clean-image {
+	border: none !important;
+	background: none !important;
+	box-shadow: none !important;
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------

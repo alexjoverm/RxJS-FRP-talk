@@ -1,0 +1,4 @@
+- esc:            overview mode
+- b or .:         no-distraction mode
+- alt + click:    zoom to the object
+- s:              speaker mode
