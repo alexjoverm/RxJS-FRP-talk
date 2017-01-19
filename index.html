@@ -65,14 +65,111 @@
 				</section>
 
 				<section>
-					<h2>What are Observables for?</h2>
+					<h2>What is FRP?</h2>
+					<h3 class="fragment">FP + RP</h3>
+					<aside class="notes">
+							The short answer: FP + RP
+					</aside>
+				</section>
+
+				<section>
+					<h2>What is Reactive Programming?</h2>
+					<div class="fragment fade-left">
+						<blockquote>Programming with asynchronous observables data streams</blockquote>
+						<small><i>André Staltz, <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">Reactive programming introduction</a></i></small>
+					</div>
+					<aside class="notes">
+						Several definitions <br><br>
+						Andre Staltz defines it like that in his introduction. <br><br>
+						Not related to sockets or frameworks reactivity
+					</aside>
+				</section>
+
+				<section>
+					<h2>ReactiveX</h2>
+					<p><small><i><a href="http://reactivex.io/">http://reactivex.io</a></i></small></p>
+
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li class="fragment fade-left">Reactive spec</li>
+						<li class="fragment fade-left">For most of languages</li>
+						<li class="fragment fade-left">RxJS</li>
 					</ul>
 				</section>
+
+				<section>
+					<h2>A stream is composed by:</h2>
+
+					<ul>
+						<li class="fragment fade-left">Observers</li>
+						<li class="fragment fade-left">Observables</li>
+						<li class="fragment fade-left">Operators</li>
+						<li class="fragment fade-left">Subscription</li>
+					</ul>
+				</section>
+
+				<section data-background="img/theatre-cover.jpg" data-transition="zoom">
+					<h2>Let the show begin!</h2>
+					<aside class="notes">
+						Most important! Understand core observables in 10 min<br><br>
+						Example of lego brought to reality
+					</aside>
+				</section>
+
+				<section>
+					<h3>Understanding a stream</h3>
+					<pre class="fragment fade-in"><code data-trim data-noescape>
+						Observable.from([1,2,3])
+							.map(num => num + 1)
+							.filter(num => num % 2)
+							.subscribe(num => console.log(num))
+					</code></pre>
+					<br>
+					<p class="fragment fade-left"><small><i>Immutability, in/out, testeability</i></small></p>
+					<aside class="notes">
+						EXPLAIN Stream, Observable, Observer, Operators <br><br>
+						4 Volunteers! <br><br>
+						Observable, Map, filter, subscribe <br> <br>
+						Say a number, +1, filter even
+					</aside>
+				</section>
+
+				<section>
+					<h3>More, more, more!</h3>
+					<pre class="fragment fade-in"><code data-trim data-noescape>
+						const obs = Observable.from([1,2,3])
+							.map(num => num + 1)
+							.filter(num => num % 2)
+
+						obs.subscribe(num => console.log("From 1", num))
+						obs.subscribe(num => console.log("From 2", num))
+					</code></pre>
+					<br>
+					<p class="fragment fade-left"><small><i>Immutability, in/out, testeability</i></small></p>
+					<aside class="notes">
+						Another Volunteer! <br><br>
+						Same, with another subscription<br> <br>
+						Say a number, +1, filter even
+					</aside>
+				</section>
+
+				<section>
+					<h3>Third round!</h3>
+					<pre class="fragment fade-in"><code data-trim data-noescape>
+						const obs1 = Observable.from([1,2,3])
+							.map(num => num + 1)
+							.filter(num => num % 2)
+							.subscribe(num => console.log(num))
+					</code></pre>
+					<br>
+					<p class="fragment fade-left"><small><i>Composability</i></small></p>
+					<p class="fragment fade-left"><small><b>Use case: </b>Multiple http calls</small></p>
+					<aside class="notes">
+						Another Volunteer! <br><br>
+						2 Observables, 2 maps, 1 merge, 1 subscription <br> <br>
+						Say a number, +1, filter even
+					</aside>
+				</section>
+
 
 				<section>
 					<iframe class="stretch" data-src="http://rxmarbles.com/" frameborder="0"></iframe>
