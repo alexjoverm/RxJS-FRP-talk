@@ -97,6 +97,10 @@
 				</section>
 
 				<section>
+					<img class="stretch" data-src="img/rxjs_npm_downloads.png" alt="">
+				</section>
+
+				<section>
 					<h2>A stream is composed by:</h2>
 
 					<ul>
@@ -144,7 +148,7 @@
 						obs.subscribe(num => console.log("From 2", num))
 					</code></pre>
 					<br>
-					<p class="fragment fade-left"><small><i>Immutability, in/out, testeability</i></small></p>
+					<p class="fragment fade-left"><small><i>One stream, multiple subscriptions</i></small></p>
 					<aside class="notes">
 						Another Volunteer! <br><br>
 						Same, with another subscription<br> <br>
@@ -190,9 +194,38 @@
 					</aside>
 				</section>
 
+				<section>
+					<h3>Double click</h3>
+					<pre><code data-trim data-noescape>
+						const click$ = Rx.Observable.fromEvent(document, 'click')
+
+						click$.bufferWhen(() => click$.delay(350))
+							.map(clicks => clicks.length)
+							.filter(clicks => clicks > 1)
+							.subscribe(clicks => console.log(clicks))
+					</code></pre>
+					<br>
+					<p class="fragment fade-left"><small>How would you do a drag event?</small></p>
+					<aside class="notes">
+
+					</aside>
+				</section>
+
+
 
 				<section>
 					<iframe class="stretch" data-src="http://rxmarbles.com/" frameborder="0"></iframe>
+				</section>
+
+				<section>
+					<h3>Resources</h3>
+					<ul class="icon-list">
+						<li class="fragment fade-left"><a href="https://www.youtube.com/watch?v=uQ1zhJHclvs&t=577s"><i class="material-icons left-icon">slideshow</i> You'll learn RxJS, <i>André Staltz</i></a></li>
+						<li class="fragment fade-left"><a href="https://www.youtube.com/watch?v=3LKMwkuK0ZE&t=1946s"><i class="material-icons left-icon">slideshow</i> Thinking reactively, <i>Ben Lesh</i></a></li>
+						<li class="fragment fade-left"><a href="https://www.youtube.com/watch?v=sF5-V-Szo0c"><i class="material-icons left-icon">slideshow</i>  Async Redux actions with RxJS, <i>Ben Lesh</i></a></li>
+						<li class="fragment fade-left"><a href="https://egghead.io/technologies/rx"><i class="material-icons left-icon">slideshow</i>  Egghead.io</a></li>
+						<li class="fragment fade-left"><a href="https://www.learnrxjs.io/"><i class="material-icons left-icon">description</i>  Learnrx.io</a></li>
+					</ul>
 				</section>
 
 			</div>

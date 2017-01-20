@@ -74,8 +74,15 @@ $transition-duration: 800ms;
 			border-left: 4px solid #999;
 		}
 	}
+	.icon-list {
+		list-style: none;
+	}
 
-
+	.left-icon {
+		font-size: 1em;
+		vertical-align: sub;
+		margin-right: 15px;
+	}
 
 	// Footer
 	#main-footer {

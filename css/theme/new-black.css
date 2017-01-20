@@ -23,6 +23,14 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-size: 0.9em;
   border-left: 4px solid #999; }
 
+.reveal .icon-list {
+  list-style: none; }
+
+.reveal .left-icon {
+  font-size: 1em;
+  vertical-align: sub;
+  margin-right: 15px; }
+
 .reveal #main-footer {
   position: absolute;
   bottom: 0;
