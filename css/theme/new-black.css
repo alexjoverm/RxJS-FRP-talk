@@ -63,13 +63,24 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal .rounded, .reveal .profile-picture {
   border-radius: 999px; }
 
+.reveal .side-iframes > * {
+  padding: 4px !important;
+  flex: 1;
+  height: 90vh; }
+
+.reveal .sponsor-images > * {
+  width: 10%;
+  border: none;
+  background: none; }
+
 .reveal .flex-container {
   display: flex;
   align-items: center;
   justify-content: space-around; }
   .reveal .flex-container > * {
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    flex: 1; }
     .reveal .flex-container > *:first-child {
       padding-left: 0; }
     .reveal .flex-container > *:last-child {
@@ -83,11 +94,22 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal .wiggle, .reveal .profile-picture {
   animation: rotatewiggle 3s ease-in-out 0s infinite alternate; }
 
+.reveal .funny-rotate {
+  animation: spin 2s cubic-bezier(0.65, 0.05, 0.36, 1) 0s infinite alternate; }
+
 @keyframes rotatewiggle {
   0% {
     transform: rotateX(5deg) rotateY(-17deg); }
   100% {
     transform: rotateX(-5deg) rotateY(15deg); } }
+
+@keyframes spin {
+  0%, 20% {
+    transform: rotate(0deg); }
+  40%, 60% {
+    transform: rotate(180deg); }
+  80%, 100% {
+    transform: rotate(360deg); } }
 
 /*********************************************
  * GLOBAL STYLES

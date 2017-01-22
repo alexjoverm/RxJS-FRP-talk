@@ -136,6 +136,22 @@ $transition-duration: 800ms;
 		border-radius: 999px;
 	}
 
+	.side-iframes {
+		> * {
+			padding: 4px !important;
+			flex: 1;
+			height: 90vh;
+		}
+	}
+
+	.sponsor-images {
+		> * {
+			width: 10%;
+			border: none;
+			background: none;
+		}
+	}
+
 	.flex-container {
 		display: flex;
 		align-items: center;
@@ -144,6 +160,7 @@ $transition-duration: 800ms;
 		> * {
 			padding-left: 20px;
 			padding-right: 20px;
+			flex: 1;
 
 			&:first-child {
 				padding-left: 0;
@@ -164,6 +181,10 @@ $transition-duration: 800ms;
 	.wiggle {
 		animation: rotatewiggle 3s ease-in-out 0s infinite alternate;
 	}
+
+	.funny-rotate {
+		animation: spin 2s cubic-bezier(0.65, 0.05, 0.36, 1) 0s infinite alternate;
+	}
 }
 
 @keyframes rotatewiggle {
@@ -175,6 +196,21 @@ $transition-duration: 800ms;
 
   }
 }
+
+@keyframes spin {
+    0%, 20% {
+        transform: rotate(0deg);
+    }
+
+    40%, 60% {
+				transform: rotate(180deg);
+    }
+
+    80%, 100% {
+				transform: rotate(360deg);
+    }
+}
+
 
 
 // Theme template ------------------------------

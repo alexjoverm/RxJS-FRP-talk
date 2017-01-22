@@ -104,7 +104,6 @@
 					<h2>A stream is composed by:</h2>
 
 					<ul>
-						<li class="fragment fade-left">Observers</li>
 						<li class="fragment fade-left">Observables</li>
 						<li class="fragment fade-left">Operators</li>
 						<li class="fragment fade-left">Subscription</li>
@@ -150,7 +149,7 @@
 					<br>
 					<p class="fragment fade-left"><small><i>One stream, multiple subscriptions</i></small></p>
 					<aside class="notes">
-						Another Volunteer! <br><br>
+						5 Volunteer (another)! <br><br>
 						Same, with another subscription<br> <br>
 						Say a number, +1, filter even
 					</aside>
@@ -160,34 +159,102 @@
 					<h3>Third round!</h3>
 					<pre class="fragment fade-in"><code data-trim data-noescape>
 						const obs1 = Observable.from([1,2,3])
-							.map(num => num + 1)
 						const obs2 = Observable.from([4,5,6])
 
 						Observable.merge(obs1, obs2)
 							.subscribe(num => console.log(num))
 					</code></pre>
 					<br>
-					<p class="fragment fade-left"><small><i>Composition</i></small></p>
-					<p class="fragment fade-left"><small><b>Use case: </b>Multiple http calls</small></p>
+					<p class="fragment fade-left"><small><i>Multiple streams composition</i></small></p>
 					<aside class="notes">
-						Another Volunteer! <br><br>
+						4 Volunteer (one less)! <br><br>
 						2 Observables, 1 maps, 1 merge, 1 subscription <br> <br>
 						Say a number, +1, filter even
 					</aside>
 				</section>
 
 				<section>
-					<h3>Let's do it even more fun!</h3>
+					<h3>I'm getting addicted!</h3>
 					<pre class="fragment fade-in"><code data-trim data-noescape>
-						const obs1 = Observable.fromEvent(input, 'change')
-							.debounce(500) // ms
+						const items$ = Rx.Observable.from([1,2,3,4,5])
+							.partition((x) => x % 2 == 0)
+
+						const evens = items$[0]
+						const odds = items$[1]
+
+						evens.subscribe(data =>	console.log(`even ${data}`))
+						odds.subscribe(data => console.log(`odd ${data}`))
+					</code></pre>
+					<br>
+					<p class="fragment fade-left"><small><i>Streams separation</i></small></p>
+					<aside class="notes">
+						4 Volunteer! <br><br>
+						1 Observables, 1 partition, 2 subscription <br> <br>
+						Say a number, +1, filter even
+					</aside>
+				</section>
+
+				<section>
+					<h3>Operators: 9 categories, ~120 in total</h3>
+					<ul>
+						<li>Creation</li>
+						<li>Transformation</li>
+						<li>Filtering</li>
+						<li>Combination</li>
+						<li>Multicasting</li>
+						<li>Error Handling</li>
+						<li>Utility</li>
+						<li>Conditional and Boolean</li>
+						<li>Mathematical and Aggregate</li>
+					</ul>
+					<img class="fragment" src="http://i.giphy.com/3oEduNI8JWlbEk1HbO.gif" alt="">
+				</section>
+
+				<section>
+					<h3>Most used</h3>
+					<pre><code data-trim data-noescape>
+					Observable
+						.from // Promise, array or iterable
+						.fromEvent // DOM event, NodeJS EventEmmiter
+						.of
+						.bindCallback
+						.bindNodeCallback
+
+						.map/.mapTo
+						.mergeMap
+						.switchMap
+
+						.filter
+						.first/.last
+						.take
+
+						.merge
+						.combineLatest
+						.concat
+						.zip
+						.forkJoin
+					</code></pre>
+				</section>
+
+
+
+				<section data-background="img/cover1.jpg" data-transition="zoom">
+					<h2>Real examples</h2>
+				</section>
+
+				<section>
+					<h3>Typeahead in Angular 2</h3>
+					<pre><code data-trim data-noescape>
+						const obs1 = Observable.fromEvent(input, 'keyup')
+							.map(e => e.target.value)
+							.filter(value => value.length > 2) // min 3 characters
 							.distinctUntilChanged()
-							.mergeMap(word => Observable.fromPromise(fetch(...))
+							.debounceTime(500) // ms
+							.mergeMap(word => this.http.get('...'))
+							.retry(2)
 							.subscribe(res => console.log(res))
 					</code></pre>
 					<br>
-					<p class="fragment fade-left"><small><b>Use case: </b>Search boxes with server calls</small></p>
-					<p class="fragment fade-left"><small><b>Use case 2: </b>Complex operations after resize event</small></p>
 					<aside class="notes">
 						Just 4 Volunteer! <br><br>
 						1 Observables, 1 debounce, 1 distinctUntil, 1 subscription <br> <br>
@@ -211,14 +278,24 @@
 					</aside>
 				</section>
 
+				<section>
+					<div class="flex-container side-iframes">
+						<iframe data-src="https://embed.plnkr.co/d7qzGKAzX873tM0zMzGv/" frameborder="0"></iframe>
+						<iframe data-src="https://embed.plnkr.co/d7qzGKAzX873tM0zMzGv/" frameborder="0"></iframe>
+					</div>
+				</section>
 
+
+				<section data-background="img/cover2.jpg" data-transition="zoom">
+					<h2>Resources</h2>
+				</section>
 
 				<section>
 					<iframe class="stretch" data-src="http://rxmarbles.com/" frameborder="0"></iframe>
 				</section>
 
 				<section>
-					<h3>Resources</h3>
+					<h3>Links</h3>
 					<ul class="icon-list">
 						<li class="fragment fade-left"><a href="https://www.youtube.com/watch?v=uQ1zhJHclvs&t=577s"><i class="material-icons left-icon">slideshow</i> You'll learn RxJS, <i>André Staltz</i></a></li>
 						<li class="fragment fade-left"><a href="https://www.youtube.com/watch?v=3LKMwkuK0ZE&t=1946s"><i class="material-icons left-icon">slideshow</i> Thinking reactively, <i>Ben Lesh</i></a></li>
@@ -226,6 +303,22 @@
 						<li class="fragment fade-left"><a href="https://egghead.io/technologies/rx"><i class="material-icons left-icon">slideshow</i>  Egghead.io</a></li>
 						<li class="fragment fade-left"><a href="https://www.learnrxjs.io/"><i class="material-icons left-icon">description</i>  Learnrx.io</a></li>
 					</ul>
+				</section>
+
+				<section>
+					<h3>Workshop Angular 2 y Redux</h3>
+					<p>Suscribete! <a href="https://goo.gl/rPdx4f">goo.gl/rPdx4f</a></p>
+					<br>
+					<div class="flex-container sponsor-images">
+						<img src="img/ua.jpg" alt="">
+						<img src="img/alicantefrontend.png" alt="">
+						<img src="img/devmeetings.png" alt="">
+					</div>
+				</section>
+
+				<section data-state="cover">
+					<h1>Thanks</h1>
+					<h1><i class="material-icons left-icon funny-rotate">mood</i></h1>
 				</section>
 
 			</div>
