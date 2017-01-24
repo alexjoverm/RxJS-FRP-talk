@@ -66,7 +66,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal .side-iframes > * {
   padding: 4px !important;
   flex: 1;
-  height: 90vh; }
+  height: 70vh; }
 
 .reveal .sponsor-images > * {
   width: 10%;
